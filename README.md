@@ -9,14 +9,13 @@
 
 ## Demo
 
-<img src="docs/Views(UI)/images/Home_Admin.png" alt="Anjoman Logo" style="height: 300px; padding: 0 20px;">
-<img src="docs/Views(UI)/images/menu-1.png" alt="Anjoman Logo" style="height: 300px; padding: 0 20px;">
-<img src="docs/Views(UI)/images/Home_Student.png" alt="Anjoman Logo" style="height: 300px; padding: 0 20px;">
-<img src="docs/Views(UI)/images/new(Contact us).png" alt="Anjoman Logo" style="height: 300px; padding: 0 20px;">
-<img src="docs/Views(UI)/images/new(Contact us)-1.png" alt="Anjoman Logo" style="height: 300px; padding: 0 20px;">
-<img src="docs/Views(UI)/images/Welcome-2.png" alt="Anjoman Logo" style="height: 300px; padding: 0 20px;">
+<img src="docs/Views(UI)/images/Home_Admin.png" alt="Home_Admin" style="height: 300px; padding: 0 20px;">
+<img src="docs/Views(UI)/images/menu-1.png" alt="menu" style="height: 300px; padding: 0 20px;">
+<img src="docs/Views(UI)/images/Home_Student.png" alt="Home_Student" style="height: 300px; padding: 0 20px;">
+<img src="docs/Views(UI)/images/new(Contact us).png" alt="Contact us" style="height: 300px; padding: 0 20px;">
+<img src="docs/Views(UI)/images/new(Contact us)-1.png" alt="Contact us" style="height: 300px; padding: 0 20px;">
+<img src="docs/Views(UI)/images/Welcome-2.png" alt="Welcome-2" style="height: 300px; padding: 0 20px;">
 </div>
-<!-- <img src="assets/images/huntalogo_text.png" alt="Anjoman Logo" width="200"> -->
 
 ## Documentation
 All the documents in the directory ["docs"](/docs/readme.md) and online will be placed on the [site soon](https://github.com/HossienHunTa/anjoman-application). If you intend to develop software, you can read  [this section](/docs/dev.md).
@@ -52,7 +51,9 @@ To run this project, you need to add the following environment variables to your
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
-
+<div align="center">
+  <img src="assets/images/huntalogo_text.png" alt="HunTa Logo" style="width: 300px; padding: 0 20px;">
+</div>
 
 
 
