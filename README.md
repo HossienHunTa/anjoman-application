@@ -1,16 +1,58 @@
-# anjoman
+<div align="center">
+  <img src="assets/images/anjomanlogo.png" alt="Anjoman Logo" style="width: 150px; padding: 0 20px;">
+  <h1>Anjoman</h1>
+  <p>Association is an application for academic associations and academic groups to improve communication between students and professors with the association.</p>
+</div>
+<div align="center">
 
-A new Flutter project.
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](/LICENSE)
 
-## Getting Started
+## Demo
 
-This project is a starting point for a Flutter application.
+<img src="docs/Views(UI)/images/Home_Admin.png" alt="Anjoman Logo" style="height: 300px; padding: 0 20px;">
+<img src="docs/Views(UI)/images/menu-1.png" alt="Anjoman Logo" style="height: 300px; padding: 0 20px;">
+<img src="docs/Views(UI)/images/Home_Student.png" alt="Anjoman Logo" style="height: 300px; padding: 0 20px;">
+<img src="docs/Views(UI)/images/new(Contact us).png" alt="Anjoman Logo" style="height: 300px; padding: 0 20px;">
+<img src="docs/Views(UI)/images/new(Contact us)-1.png" alt="Anjoman Logo" style="height: 300px; padding: 0 20px;">
+<img src="docs/Views(UI)/images/Welcome-2.png" alt="Anjoman Logo" style="height: 300px; padding: 0 20px;">
+</div>
+<!-- <img src="assets/images/huntalogo_text.png" alt="Anjoman Logo" width="200"> -->
 
-A few resources to get you started if this is your first Flutter project:
+## Documentation
+All the documents in the directory ["docs"](/docs/readme.md) and online will be placed on the [site soon](https://github.com/HossienHunTa/anjoman-application). If you intend to develop software, you can read  [this section](/docs/dev.md).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Acknowledgements
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ - [Pedram Mousapoor](https://www.linkedin.com/in/pedram-mousapoor-92a940261/) for the UI&UX design of this app
+
+
+## Authors
+
+- [Hossien Mohmmadian](https://www.github.com/hossienhunta)
+- [Pedram Mousapoor](https://www.linkedin.com/in/pedram-mousapoor-92a940261/)
+
+
+
+
+
+## Environment Variables
+
+To run this project, you need to add the following environment variables to your .env file.
+
+| Name             | Type                                                                 |
+| ----------------- | ------------------------------------------------------------------ |
+| `dbHOST` | String |
+| `dbPORT` | Int |
+| `dbDATABASE` | String |
+| `dbUSERNAME` | String |
+| `dbPASSWORD` | String |
+| `Key` | String |
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+
+
+
