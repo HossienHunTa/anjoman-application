@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'from/en-US.dart';
 part 'from/fa-IR.dart';
 
 class Languages extends Translations {
-  static final GetStorage _box = GetStorage('Application');
-  static RxBool isPersian = (_box.read('isPersian')).obs;
+  static final Future<SharedPreferences> _prefs =
+      SharedPreferences.getInstance();
+  static RxBool isPersian = true.obs;
 
   static const localizationsDelegates = [
     GlobalMaterialLocalizations.delegate,
@@ -16,25 +17,25 @@ class Languages extends Translations {
     GlobalWidgetsLocalizations.delegate,
   ];
   static const supportedLocales = [
-    Locale('en', 'US'),
     Locale('fa', 'IR'),
+    Locale('en', 'US'),
   ];
 
   static changeLanguage() async {
+    SharedPreferences prefs = await _prefs;
     isPersian.value = !isPersian.value;
     Get.updateLocale(
       isPersian.value ? const Locale('fa', 'IR') : const Locale('en', 'US'),
     );
-    await _box.write('isPersian', isPersian.value);
-    await _box.save();
+    prefs.setBool('isPersian', isPersian.value);
   }
 
   static void getLanguageStatus() async {
-    if (!_box.hasData('isPersian')) {
-      await _box.write('isPersian', true);
-      await _box.save();
+    SharedPreferences prefs = await _prefs;
+    if (prefs.getBool('isPersian') == null) {
+      prefs.setBool('isPersian', isPersian.value);
     }
-    isPersian.value = await _box.read('isPersian');
+    isPersian.value = prefs.getBool('isPersian') as bool;
     Get.updateLocale(
       isPersian.value ? const Locale('fa', 'IR') : const Locale('en', 'US'),
     );
@@ -42,7 +43,7 @@ class Languages extends Translations {
 
   @override
   Map<String, Map<String, String>> get keys => {
-        'en_US': enUS,
         'fa_IR': faIR,
+        'en_US': enUS,
       };
 }

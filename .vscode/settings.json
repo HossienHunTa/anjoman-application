@@ -8,6 +8,7 @@
         "Fernet",
         "Hmac",
         "korlen",
-        "pointycastle"
+        "pointycastle",
+        "prefs"
     ]
 }

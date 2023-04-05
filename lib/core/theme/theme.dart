@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'colors.dart';
 
 class MyTheme {
   MyTheme._();
-  static final GetStorage _box = GetStorage('Application');
-  static RxBool isDarkTheme = (_box.read('isDarkTheme')).obs;
+  static final Future<SharedPreferences> _prefs =
+      SharedPreferences.getInstance();
+  static RxBool isDarkTheme = true.obs;
   static ThemeData lightTheme = ThemeData(
       fontFamily: 'Mitra',
       primaryColor: MyColors.miloOrange,
@@ -27,20 +28,20 @@ class MyTheme {
       ));
 
   static changeTheme() async {
+    SharedPreferences prefs = await _prefs;
     isDarkTheme.value = !isDarkTheme.value;
     Get.changeThemeMode(
       isDarkTheme.value ? ThemeMode.dark : ThemeMode.light,
     );
-    await _box.write('isDarkTheme', isDarkTheme.value);
-    await _box.save();
+    prefs.setBool('isDarkTheme', isDarkTheme.value);
   }
 
   static void getThemeStatus() async {
-    if (!_box.hasData('isDarkTheme')) {
-      await _box.write('isDarkTheme', true);
-      await _box.save();
+    SharedPreferences prefs = await _prefs;
+    if (prefs.getBool('isDarkTheme') == null) {
+      prefs.setBool('isDarkTheme', isDarkTheme.value);
     }
-    isDarkTheme.value = await _box.read('isDarkTheme');
+    isDarkTheme.value = prefs.getBool('isDarkTheme') as bool;
     Get.changeThemeMode(
       isDarkTheme.value ? ThemeMode.dark : ThemeMode.light,
     );

@@ -7,12 +7,12 @@ environment:
 
 dependencies: 
   cupertino_icons: ^1.0.2
-  get: 4.6.5
-  get_storage: ^2.1.1
+  get: ^4.6.5
   mysql1: ^0.20.0
   encrypt: ^5.0.1
   envied: ^0.3.0
-  responsive_framework: 0.2.0
+  responsive_framework: ^0.2.0
+  shared_preferences: ^2.1.0
   flutter: 
     sdk: flutter
   flutter_localizations: 

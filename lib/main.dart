@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 // Package>pub lib
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 // Package>Anjoman>Core
 import 'package:anjoman/core/theme/theme.dart';
@@ -22,7 +21,6 @@ void main() async {
 
 Future<void> initializeApp() async {
   //Access Service and Storage Data
-  await GetStorage.init();
 }
 
 class MyApp extends StatelessWidget {
@@ -44,8 +42,12 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: Languages.localizationsDelegates,
       supportedLocales: Languages.supportedLocales,
       translations: Languages(),
-      locale: const Locale('en', 'US'),
-      fallbackLocale: const Locale('fa', 'IR'),
+      locale: Languages.isPersian.value
+          ? const Locale('fa', 'IR')
+          : const Locale('en', 'US'),
+      fallbackLocale: Languages.isPersian.value
+          ? const Locale('en', 'US')
+          : const Locale('fa', 'IR'),
       getPages: AppPages.routes,
       initialRoute: AppPages.INITIAL,
       unknownRoute: AppPages.UNKNOWN,
