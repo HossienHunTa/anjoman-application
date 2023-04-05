@@ -6,7 +6,7 @@ import 'colors.dart';
 class MyTheme {
   MyTheme._();
   static final GetStorage _box = GetStorage('Application');
-  static RxBool isDarkTheme = false.obs;
+  static RxBool isDarkTheme = (_box.read('isDarkTheme')).obs;
   static ThemeData lightTheme = ThemeData(
       fontFamily: 'Mitra',
       primaryColor: MyColors.miloOrange,
@@ -26,21 +26,23 @@ class MyTheme {
         disabledColor: MyColors.karBlue,
       ));
 
-  static changeTheme() {
+  static changeTheme() async {
     isDarkTheme.value = !isDarkTheme.value;
     Get.changeThemeMode(
-      isDarkTheme.value ? ThemeMode.light : ThemeMode.dark,
+      isDarkTheme.value ? ThemeMode.dark : ThemeMode.light,
     );
+    await _box.write('isDarkTheme', isDarkTheme.value);
+    await _box.save();
   }
 
   static void getThemeStatus() async {
-    if (_box.hasData('theme')) {
-      isDarkTheme.value = _box.read('theme');
-      Get.changeThemeMode(isDarkTheme.value ? ThemeMode.light : ThemeMode.dark);
-    } else {
-      _box.write('theme', isDarkTheme.value);
-      isDarkTheme.value = _box.read('theme');
-      Get.changeThemeMode(isDarkTheme.value ? ThemeMode.light : ThemeMode.dark);
+    if (!_box.hasData('isDarkTheme')) {
+      await _box.write('isDarkTheme', true);
+      await _box.save();
     }
+    isDarkTheme.value = await _box.read('isDarkTheme');
+    Get.changeThemeMode(
+      isDarkTheme.value ? ThemeMode.dark : ThemeMode.light,
+    );
   }
 }

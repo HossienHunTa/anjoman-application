@@ -8,7 +8,7 @@ part 'from/fa-IR.dart';
 
 class Languages extends Translations {
   static final GetStorage _box = GetStorage('Application');
-  static RxBool isPersian = false.obs;
+  static RxBool isPersian = (_box.read('isPersian')).obs;
 
   static const localizationsDelegates = [
     GlobalMaterialLocalizations.delegate,
@@ -20,26 +20,24 @@ class Languages extends Translations {
     Locale('fa', 'IR'),
   ];
 
-  static changeLanguage() {
+  static changeLanguage() async {
     isPersian.value = !isPersian.value;
     Get.updateLocale(
       isPersian.value ? const Locale('fa', 'IR') : const Locale('en', 'US'),
     );
+    await _box.write('isPersian', isPersian.value);
+    await _box.save();
   }
 
   static void getLanguageStatus() async {
-    if (_box.hasData('theme')) {
-      isPersian.value = _box.read('lang');
-      Get.updateLocale(
-        isPersian.value ? const Locale('fa', 'IR') : const Locale('en', 'US'),
-      );
-    } else {
-      _box.write('theme', isPersian.value);
-      isPersian.value = _box.read('theme');
-      Get.updateLocale(
-        isPersian.value ? const Locale('fa', 'IR') : const Locale('en', 'US'),
-      );
+    if (!_box.hasData('isPersian')) {
+      await _box.write('isPersian', true);
+      await _box.save();
     }
+    isPersian.value = await _box.read('isPersian');
+    Get.updateLocale(
+      isPersian.value ? const Locale('fa', 'IR') : const Locale('en', 'US'),
+    );
   }
 
   @override
@@ -48,4 +46,3 @@ class Languages extends Translations {
         'fa_IR': faIR,
       };
 }
-// Get.updateLocale(locale);
