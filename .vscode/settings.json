@@ -1,3 +1,13 @@
 {
-    "cmake.sourceDirectory": "${workspaceFolder}/windows"
+    "cmake.sourceDirectory": "${workspaceFolder}/windows",
+    "cSpell.words": [
+        "Anjoman",
+        "Cupertino",
+        "Dilin",
+        "Encrypter",
+        "Fernet",
+        "Hmac",
+        "korlen",
+        "pointycastle"
+    ]
 }
