@@ -62,7 +62,6 @@ class MyApp extends StatelessWidget {
           ResponsiveBreakpoint.resize(1000, name: DESKTOP),
           ResponsiveBreakpoint.autoScale(2460, name: '4K'),
         ],
-        background: Container(color: Colors.white),
       ),
     );
   }

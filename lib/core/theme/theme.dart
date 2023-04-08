@@ -27,7 +27,7 @@ class MyTheme {
         disabledColor: MyColors.karBlue,
       ));
 
-  static changeTheme() async {
+  static void changeTheme() async {
     SharedPreferences prefs = await _prefs;
     isDarkTheme.value = !isDarkTheme.value;
     Get.changeThemeMode(
@@ -38,7 +38,7 @@ class MyTheme {
 
   static void getThemeStatus() async {
     SharedPreferences prefs = await _prefs;
-    if (prefs.getBool('isDarkTheme') == null) {
+    if (!prefs.containsKey('isDarkTheme')) {
       prefs.setBool('isDarkTheme', isDarkTheme.value);
     }
     isDarkTheme.value = prefs.getBool('isDarkTheme') as bool;

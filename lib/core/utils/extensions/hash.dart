@@ -4,8 +4,8 @@ import 'package:encrypt/encrypt.dart';
 
 class HashAES {
   //AES Algorithms
-  static Encrypted? encrypted;
-  static String? decrypted;
+  static Encrypted? _encrypted;
+  static String? _decrypted;
 
   static encrypt(String data) {
     String? value = Env.key;
@@ -13,8 +13,8 @@ class HashAES {
     final b64key = Key.fromUtf8(base64Url.encode(key.bytes));
     final fernet = AES(b64key);
     final encrypter = Encrypter(fernet);
-    encrypted = encrypter.encrypt(data, iv: IV.fromLength(16));
-    return (encrypted!.base64);
+    _encrypted = encrypter.encrypt(data, iv: IV.fromLength(16));
+    return (_encrypted!.base64);
   }
 
   static decrypt(String data) {
@@ -23,7 +23,7 @@ class HashAES {
     final b64key = Key.fromUtf8(base64Url.encode(key.bytes));
     final fernet = AES(b64key);
     final encrypter = Encrypter(fernet);
-    decrypted = encrypter.decrypt64(data, iv: IV.fromLength(16));
-    return (decrypted);
+    _decrypted = encrypter.decrypt64(data, iv: IV.fromLength(16));
+    return (_decrypted);
   }
 }

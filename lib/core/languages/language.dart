@@ -21,7 +21,7 @@ class Languages extends Translations {
     Locale('en', 'US'),
   ];
 
-  static changeLanguage() async {
+  static void changeLanguage() async {
     SharedPreferences prefs = await _prefs;
     isPersian.value = !isPersian.value;
     Get.updateLocale(
@@ -32,7 +32,7 @@ class Languages extends Translations {
 
   static void getLanguageStatus() async {
     SharedPreferences prefs = await _prefs;
-    if (prefs.getBool('isPersian') == null) {
+    if (!prefs.containsKey('isPersian')) {
       prefs.setBool('isPersian', isPersian.value);
     }
     isPersian.value = prefs.getBool('isPersian') as bool;
